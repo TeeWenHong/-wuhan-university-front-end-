@@ -99,6 +99,7 @@
 
 <script>
 export default {
+    name:'login',
     data() {
       return {
         //表单数据
@@ -121,7 +122,7 @@ export default {
     },
     methods:{
       mySwitch(){
-        this.$router.push({path:"/singin"});
+        this.$router.push({path:"/homebase"});
       },
     //   let flag=true
     //   const mySwitch=()=>{
@@ -145,9 +146,6 @@ export default {
       })
     },
   },
-  
-  
-
 }
 </script>
 
