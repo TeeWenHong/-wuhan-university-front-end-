@@ -4,7 +4,7 @@
     <!-- 上部资讯框 -->
     <div class="topauthor">
         <!-- 网站名 -->
-        <div class="webname">
+        <div @click="gohome()" class="webname">
             轻书阁
         </div>
         <!-- 标题框 -->
@@ -15,7 +15,8 @@
         <!-- 用户框——名字 -->
         <!-- 这里需要数据绑定，先用div来占位置，现在不是玩完整功能 ！！！！！！！！！！！！！！！！！！！！！！！！-->
         <div class="authoruser">
-            用户100000001
+            <!-- 用户100000001 -->
+            <UserComponents/>
         </div>
     </div>
 
@@ -24,10 +25,10 @@
         <!-- 控制台选择框 -->
         <div class="authorButton">
             <br>
-            <router-link to="/author/control" active-class="active" class="" style="text-decoration:none; position: absolute; left: 30px;">控制台</router-link><br><br>
-            <router-link to="/author/manage" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;">作品管理</router-link><br><br>
-            <router-link to="/author/datacenter" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;">数据中心</router-link><br><br>
-            <router-link to="/author" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;">购买的插画</router-link><br><br>
+            <router-link to="/author/control" active-class="active" class="" style="text-decoration:none; position: absolute; left: 30px;color: black;">控制台</router-link><br><br>
+            <router-link to="/author/manage" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">作品管理</router-link><br><br>
+            <router-link to="/author/datacenter" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">数据中心</router-link><br><br>
+            <router-link to="/author/buypainting" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">购买的插画</router-link><br><br>
         </div>
         <!-- 右边控制台内容 -->
         <div class="authorButtonInfo">
@@ -38,25 +39,37 @@
 </template>
 
 <script>
-export default {
+  import UserComponents from './myComponents/UserComponents'
 
+  export default {
+    components:{UserComponents},
+    data(){
+        return{
+
+        }
+    },methods:{
+        gohome(){
+            this.$router.push({path:"/homebase/home"});
+        }
+    },
+    
 }
 </script>
 
 <style>
 
 .authorButtonInfo{
-    background-color: white;
+    background-color: rgb(201, 201, 201);
     width: 900px;
     height: 1200px;
     left: 350px;
     top: 30px;
     border-radius: 20px;
-    position: absolute
+    position: absolute;
 }
 
 .authorButton{
-    background-color: white;
+    background-color: rgb(201, 201, 201);
     font-size: 30px;
     color: black;
     text-decoration:none;
@@ -66,13 +79,13 @@ export default {
     left: 50px;
     position: absolute;
     border-radius: 20px;
-
+    
 }
 
 .authorinfo{
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(255, 255, 255);
     width: 1300px;
-    height: 1400px;
+    height: 1350px;
     top: 70px;
     left: 100px;
     position: absolute;
@@ -121,7 +134,7 @@ export default {
 
 .author{
   background-color: #F0C2A9;
-  height: 1500px;
+  min-height: 1500px;
   min-width: 1510px;
   position: relative;
 }

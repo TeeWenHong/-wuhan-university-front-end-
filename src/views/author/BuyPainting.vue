@@ -15,7 +15,7 @@ export default {
 <style scoped>
 
 .box{
-  background-color: rgb(255, 255, 255);
+  background-color: aliceblue;
   height: 1150px;
   width: 850px;
   position: absolute;

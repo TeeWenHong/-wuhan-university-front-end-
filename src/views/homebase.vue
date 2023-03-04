@@ -23,11 +23,14 @@
   <!-- 用户,购物车，钱包和通知 -->
       <div class="loginbox">
         <i class="el-icon-user"  style="font-size: 50px"></i>
-        
-        <i @click="gohome()" class="el-icon-user"  style="font-size: 50px"></i>
-        <i @click="gohome()" class="el-icon-bank-card"  style="font-size: 50px"></i>
-        <i @click="gohome()" class="el-icon-message-solid"  style="font-size: 50px"></i>
-        <i @click="gohome()" class="el-icon-s-goods"  style="font-size: 50px"></i>
+        <i @click="goUser()" class="el-icon-user"  style="font-size: 50px "></i>
+        <router-link to="/homebase/wallet">
+          <i class="el-icon-bank-card"  style="font-size: 50px"></i>
+        </router-link>
+        <i @click="goNew()" class="el-icon-message-solid"  style="font-size: 50px"></i>
+        <router-link to="/homebase/trolley">
+          <i class="el-icon-s-goods"  style="font-size: 50px"></i>
+        </router-link>
       </div>
       
 
@@ -69,7 +72,14 @@ export default {
       },
       gopainter(){
         this.$router.push({path:"/painter"});
-      }
+      },
+      goNew(){
+        this.$router.push({path:"/new"});
+      },
+      goUser(){
+        this.$router.push({path:"/userinfo"});
+      },
+      
     }
 }
 
@@ -77,6 +87,14 @@ export default {
 
 
 <style>
+
+.el-icon-s-goods{
+  color: #000;
+}
+
+.el-icon-bank-card{
+  color: #000;
+}
 
 .user{
   background-color: #F0C2A9;
@@ -97,7 +115,9 @@ export default {
   left: 50px;
   text-align:center;
   font-size: 35px;
-  color: wheat;
+  /* color: wheat; */
+  color: rgb(255, 254, 254);
+  text-decoration:none;
 }
 
 .homebutton2{
@@ -108,7 +128,8 @@ export default {
   left: 250px;
   text-align:center;
   font-size: 35px;
-  color: wheat;
+  color: rgb(255, 255, 255);
+  text-decoration:none;
 }
 .homebutton3{
   /* background-color: #F0C2A9; */
@@ -151,7 +172,7 @@ export default {
   height: 1300px;
   position:absolute;
   left: 50px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .background{

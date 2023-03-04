@@ -2,12 +2,14 @@
   <div class="home">
     <div class="login-box">
 
-      
+      <!-- 暂时站位框 -->
+      <div class="login-info"></div>
+
       <div class="login-info">
         <!-- 表单位置 -->
         <el-form ref="loginFrormRef" :rules="loginRules" :model="loginForm" label-width="0" >
 
-          <div class="username">
+        <div class="username">
           用户名
           <el-form-item prop="username">
           <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
@@ -15,50 +17,7 @@
         </div>
         <div class="password">
           密码
-        <el-form-item prop="password">
-          <el-input v-model="loginForm.password" placeholder="请输入密码" ></el-input>
-        </el-form-item>
-        </div>
-
-        <!-- 登录与注册按键 -->
-        <el-form-item>
-
-          <div class="button-login">
-
-          <el-button  type="success" style="width:60%;margin-bottom:15px;
-          background-color: #86A8E7;border-radius: 20px;
-          box-shadow:#000000 3px 3px 10px 0.1px;">
-          入阁
-          </el-button>
-        
-        </div>
-        <div class="button-singin">
-   
-          <el-button   type="success" style="width:60%;margin-bottom:15px;background-color: #86A8E7;border-radius: 20px;box-shadow:#000000 3px 3px 10px 0.1px;">
-          注册
-          </el-button>            
-          
-        </div>
-        </el-form-item>       
-        </el-form>
-        
-      </div>
-
-
-
-      <div class="login-info">
-        <!-- 表单位置 -->
-        <el-form ref="loginFrormRef" :rules="loginRules" :model="loginForm" label-width="0" >
-
-          <div class="username">
-          用户名
-          <el-form-item prop="name">
-          <el-input v-model="loginForm.name" placeholder="请输入用户名"></el-input>
-          </el-form-item>
-        </div>
-        <div class="password">
-          密码
-        <el-form-item prop="password">
+          <el-form-item prop="password">
           <el-input type="password" v-model="loginForm.password" placeholder="请输入密码" ></el-input>
         </el-form-item>
         </div>
@@ -66,20 +25,27 @@
         <!-- 登录与注册按键 -->
         <el-form-item>
 
-          <div class="button-login">
-
-          <el-button @click="login" type="success" style="width:60%;margin-bottom:15px;background-color: #86A8E7;border-radius: 20px;box-shadow:#000000 3px 3px 10px 0.1px;">
+        <div class="button-login">
+          <el-button @click="login" type="success" 
+          style="width:60%;
+          margin-bottom:15px;
+          background-color: #86A8E7;
+          border-radius: 20px;
+          box-shadow:#000000 3px 3px 10px 0.1px;">
           入阁
           </el-button>
-        
-        </div>
+        </div> 
+
         <div class="button-singin">
-   
-          <el-button @click="mySwitch()"  type="success" style="width:60%;margin-bottom:15px;background-color: #86A8E7;border-radius: 20px;box-shadow:#000000 3px 3px 10px 0.1px;">
+          <el-button @click="mySwitch()"  type="success" 
+          style="width:60%;
+          margin-bottom:15px;
+          background-color: #86A8E7;
+          border-radius: 20px;
+          box-shadow:#000000 3px 3px 10px 0.1px;">
           注册
-          </el-button>  
+          </el-button> 
                     
-          
         </div>
         </el-form-item>       
         </el-form>
@@ -104,7 +70,7 @@ export default {
       return {
         //表单数据
         loginForm:{
-          name:"Jackson",
+          username:"Jackson",
           password:"123456"
         },
         //验证
@@ -122,7 +88,7 @@ export default {
     },
     methods:{
       mySwitch(){
-        this.$router.push({path:"/homebase"});
+        this.$router.push({path:"/singin"});
       },
     //   let flag=true
     //   const mySwitch=()=>{
@@ -137,9 +103,10 @@ export default {
       this.$refs.loginFrormRef.validate(async valid=>{
         if(!valid)return;
         const {data:res}= await this.$http.post("login",this.loginForm);
-        if(res =="ok"){
+        if(res.flag =="ok"){
           this.$message.success("登陆成功");
-          this.$router.push({path:"/home"});
+          this.$router.push({path:"/homebase"});
+          console.log(res.user);
         }else{
           this.$message.error("登陆失败，密码或用户名错误");
         }

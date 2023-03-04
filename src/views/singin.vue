@@ -11,8 +11,8 @@
 
           <div class="username">
           用户名
-          <el-form-item prop="name">
-          <el-input v-model="loginForm.name" placeholder="请输入用户名"></el-input>
+          <el-form-item prop="username">
+          <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
         </div>
         <div class="password">
@@ -29,7 +29,7 @@
         <!-- 登录与注册按键 -->
         <el-form-item>
         <div class="button-singin2">
-          <el-button @click="mySwitch()"  type="success" style="width:60%;margin-bottom:15px;background-color: #86A8E7;border-radius: 20px;box-shadow:#000000 3px 3px 10px 0.1px;">
+          <el-button @click="singin"  type="success" style="width:60%;margin-bottom:15px;background-color: #86A8E7;border-radius: 20px;box-shadow:#000000 3px 3px 10px 0.1px;">
           注册
           </el-button>  
         </div>
@@ -74,7 +74,7 @@ export default {
       return {
         //表单数据
         loginForm:{
-          name:"",
+          username:"",
           password:"",
           password2:""
         },
@@ -99,9 +99,9 @@ export default {
     },
     methods:{
       mySwitch(){
-        this.$router.push({path:"/singin"});
+        // this.$router.push({path:"/login"});
       },
-      login(){
+      singin(){
         this.$refs.loginFrormRef.validate(async valid=>{
         if(!valid)return;
         const {data:res}= await this.$http.post("login",this.loginForm);

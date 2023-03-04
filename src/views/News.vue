@@ -1,6 +1,6 @@
 <template>
-    <!-- 作家全局模块 -->
-  <div class="painter">
+    <!-- 消息全局模块 -->
+  <div class="new">
     <!-- 上部资讯框 -->
     <div class="topauthor">
         <!-- 网站名 -->
@@ -8,22 +8,18 @@
             轻书阁
         </div>
         <!-- 标题框 -->
-        <router-link to="/painter/update" active-class="active" class="paintertitle">上传作品</router-link>
-        <router-link to="/painter/mywork" active-class="active" class="paintertitle2">我的作品</router-link>
-        <router-link to="/painter/applicationmanagement" active-class="active" class="paintertitle3">申请管理</router-link>
-        
+        <a class="paintertitle">消息通知</a>
 
         <!-- 用户框——名字 -->
         <!-- 这里需要数据绑定，先用div来占位置，现在不是玩完整功能 ！！！！！！！！！！！！！！！！！！！！！！！！-->
         <div class="authoruser">
-            <!-- 用户组件 -->
             <UserComponents/>
         </div>
     </div>
 
     <!-- 下面的内容 -->
-    <div class="painterinfo">
-        <router-view/>
+    <div class="newInfo">
+        
     </div>
   </div>
 </template>
@@ -32,7 +28,7 @@
 import UserComponents from './myComponents/UserComponents'
 
 export default {
-    components:{UserComponents},
+  components:{UserComponents},
     data(){
         return{
 
@@ -45,35 +41,10 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 
-.paintertitle3{
-    background-color: aliceblue;
-    width: 200px;
-    height: 50px;
-    left: 620px;
-    font-size: 35px;
-    line-height:50px;
-    text-align: center;
-    position: absolute;
-    color: black;
-    text-decoration:none;
-}
 
-.paintertitle2{
-    background-color: aliceblue;
-    width: 200px;
-    height: 50px;
-    left: 420px;
-    font-size: 35px;
-    line-height:50px;
-    text-align: center;
-    position: absolute;
-    color: black;
-    text-decoration:none;
-}
-
-.painterinfo{
+.newInfo{
     background-color: rgb(255, 255, 255);
     width: 1300px;
     height: 1400px;
@@ -126,7 +97,7 @@ export default {
     position: relative;
 }
 
-.painter{
+.new{
   background-color: #F0C2A9;
   height: 1500px;
   min-width: 1510px;
