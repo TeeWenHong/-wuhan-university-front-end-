@@ -11,6 +11,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+// 引入pinia
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
+
+Vue.use(pinia)
+
 Vue.prototype.$http =axios
 axios.defaults.baseURL = "http://localhost:9090"
 

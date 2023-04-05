@@ -31,7 +31,7 @@
                 <p style="position: absolute;
                 left: 30px;
                 top: 10px;
-                font-size: 30px">用户名: {{name}}</p>
+                font-size: 30px">用户名: {{$store.state.loginForm.username}}</p>
                 
                 <p style="position: absolute;
                 left: 30px;
@@ -44,7 +44,7 @@
                 font-size: 30px">性别: {{sex}}</p>
             </div>
 
-        </div>
+        </div> 
 
         <div class="renewBox">
 

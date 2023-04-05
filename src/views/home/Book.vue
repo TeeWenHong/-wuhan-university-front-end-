@@ -1,12 +1,19 @@
 <template>
     <div class="about">
-      hello我是作品
+      hello我是作品!
+      {{  }}
     </div>
 </template>
 
 <script>
 export default {
-  
+  name:'book',
+  data() {
+    return{
+        // bookList[0].username
+    }
+  },
+  // props: ['bookList[0].username'],
 }
 </script>
 

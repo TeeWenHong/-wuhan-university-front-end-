@@ -31,8 +31,8 @@
         <router-link to="/homebase/trolley">
           <i class="el-icon-s-goods"  style="font-size: 50px"></i>
         </router-link>
+        <h3>{{ $route.params.username }}</h3>
       </div>
-      
 
     </div>
 
@@ -43,12 +43,13 @@
       <button @click="goauthor()" class="homebutton3">作家区</button>
       <button @click="gopainter()" class="homebutton4">画师区</button>
       <!-- 暂时用gohome函数 -->
-      <button @click="gohome()" class="homebutton5">插画区</button>  
+      <button @click="gopicture()" class="homebutton5">插画区</button>  
      
     </div>
 <!-- -----------下面的框-------------- -->
     <div class="homeinfo">      
-      <router-view/>
+      <router-view name="book" :data="bookList"/>
+      <router-view />
     </div>
     
   </div>
@@ -60,8 +61,16 @@
 export default {
     data() {
       return{
-        input2:''
+        input2:'',
+        username:"Jackson",
+        bookList:[{
+          bookName:"",
+          picPart:"",
+          username:"haha"
+          }
+        ],
       }
+      // loggedInUser:null,
     },
     methods:{
       gohome(){
@@ -79,7 +88,9 @@ export default {
       goUser(){
         this.$router.push({path:"/userinfo"});
       },
-      
+      gopicture(){
+        this.$router.push({path:"/homebase/picture"});
+      }
     }
 }
 

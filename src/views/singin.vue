@@ -22,7 +22,7 @@
         </el-form-item>
           再次请输入密码
         <el-form-item prop="password2">
-          <el-input type="password" v-model="loginForm.password2" placeholder="再次请输入密码" autocomplete="off" ></el-input>
+          <el-input type="password2" v-model="loginForm.password2" placeholder="再次请输入密码" autocomplete="off" ></el-input>
         </el-form-item>
         </div>
 
@@ -87,12 +87,12 @@ export default {
           password:[
             { required: true, message: '请输入密码', trigger: 'blur' },
             { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' },
-            {validator:validatePass,trigger:'blur'}
+            // {validator:validatePass,trigger:'blur'}
           ],
           password2:[
             { required: true, message: '请输入密码', trigger: 'blur' },
             { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' },
-            {validator:validatePass2,trigger:'blur'}
+            // {validator:validatePass2,trigger:'blur'}
           ],
         },
       };
@@ -104,12 +104,12 @@ export default {
       singin(){
         this.$refs.loginFrormRef.validate(async valid=>{
         if(!valid)return;
-        const {data:res}= await this.$http.post("login",this.loginForm);
+        const {data:res}= await this.$http.post("reg",this.loginForm);
         if(res =="ok"){
-          this.$message.success("登陆成功");
-          this.$router.push({path:"/home"});
+          this.$message.success("注册成功");
+          this.$router.push({path:"/"});
         }else{
-          this.$message.error("登陆失败，密码或用户名错误");
+          this.$message.error("注册失败，密码或用户名重复错误");
         }
       })
     },

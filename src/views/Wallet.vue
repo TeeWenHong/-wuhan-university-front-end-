@@ -12,10 +12,10 @@
             <p style="position: absolute;
                 left: 30px;
                 top: 10px;
-                font-size: 30px">铜钱: {{money}} 贯</p>
+                font-size: 30px">铜钱: {{$store.state.loginForm.money}} 贯</p>
 
             <el-button type="success" 
-            style="position: absolute;
+            style="position: absolute; 
             width: 100px;
             height: 80px;
             top: 110px;

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- <h2 v-if="loggedInUser">Welcome, {{ loggedInUser.username }}!</h2> -->
     <div class="login-box">
 
       <!-- 暂时站位框 -->
@@ -9,9 +10,11 @@
         <!-- 表单位置 -->
         <el-form ref="loginFrormRef" :rules="loginRules" :model="loginForm" label-width="0" >
 
+          
         <div class="username">
+          
           用户名
-          <el-form-item prop="username">
+          <el-form-item prop="username"> 
           <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
         </div>
@@ -32,7 +35,7 @@
           background-color: #86A8E7;
           border-radius: 20px;
           box-shadow:#000000 3px 3px 10px 0.1px;">
-          入阁
+          入阁  
           </el-button>
         </div> 
 
@@ -70,9 +73,10 @@ export default {
       return {
         //表单数据
         loginForm:{
-          username:"Jackson",
-          password:"123456"
-        },
+        username:"Jackson",
+        password:"123456",
+      },
+        loggedInUser:null,
         //验证
         loginRules:{
           username:[
@@ -85,6 +89,9 @@ export default {
           ],
         },
       };
+    },
+    mounted(){
+      console.log(this.$refs.loginFrormRef)
     },
     methods:{
       mySwitch(){
@@ -99,18 +106,24 @@ export default {
     //   }
     //   flag=!flag
     // }
-    login(){
-      this.$refs.loginFrormRef.validate(async valid=>{
-        if(!valid)return;
-        const {data:res}= await this.$http.post("login",this.loginForm);
-        if(res.flag =="ok"){
-          this.$message.success("登陆成功");
-          this.$router.push({path:"/homebase"});
-          console.log(res.user);
-        }else{
-          this.$message.error("登陆失败，密码或用户名错误");
-        }
-      })
+    login() {
+    //   this.$refs.loginFrormRef.validate(async valid => {
+    //     if (!valid) return;
+    //     const { data: res } = await this.$http.post("login", this.loginForm);
+    //     if (res.flag === "ok") {
+    //       this.$message.success("登录成功");
+    //       // this.test = ref.user.username;
+    //       this.$router.push({ path: "/homebase" });
+    //       console.log(res.user.username); // 打印用户信息
+    //       console.log(res.user.id);
+    //       // console.log(test);
+    //       // 将用户信息保存到Vue组件的数据中，然后在页面上显示
+    //       this.loggedInUser = res.user;
+    //     } else {
+    //       this.$message.error("登录失败，密码或用户名错误");
+    //    }
+    //  });
+      this.$store.dispatch('login',this)
     },
   },
 }

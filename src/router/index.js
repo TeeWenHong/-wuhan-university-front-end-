@@ -7,12 +7,14 @@ import Home from '../views/home/Home.vue'
 import singin from '../views/singin.vue'
 import homebase from '../views/homebase.vue'
 import Book from '../views/home/Book.vue'
+import Picture from '../views/home/Picture.vue'
 // 导入作家
 import Author from '../views/Author.vue'
 import Control from '../views/author/Control.vue'
 import Manage from '../views/author/Manage.vue'
 import DataCenter from '../views/author/DataCenter.vue'
 import BuyPainting from '../views/author/BuyPainting.vue'
+import UpdateNovel from '../views/author/UpdateNovel.vue'
 // 导入画家
 import Painter from '../views/Painter.vue'
 import UpDate from '../views/painter/UpDate.vue'
@@ -87,6 +89,10 @@ const routes = [
       {
         path:'buypainting',
         component: BuyPainting,
+      },
+      {
+        path:'UpdateNovel',
+        component: UpdateNovel,
       }
     ]
   },
@@ -140,6 +146,11 @@ const routes = [
         path: 'trolley',
         name: 'trolley',
         component:  Trolley
+      },
+      {
+        path: 'picture',
+        name: 'picture',
+        component:  Picture
       },
     ]
   }
