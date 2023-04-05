@@ -13,9 +13,9 @@
       left: 20px;
       top: 100px;
       position: absolute;">
-      粉丝数:{{fans}} &emsp;&emsp; 
+      粉丝数:{{$store.state.loginForm.fans}} &emsp;&emsp; 
       作品数量:{{bookNumber}}</h2>
-      <!-- <h2>作品数量:{{book}}</h2> -->
+      <!-- <h2>作品数量:{{book}}</h2> --> 
     </div>
 
     <div class="bookControl">

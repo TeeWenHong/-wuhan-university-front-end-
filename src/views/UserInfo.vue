@@ -33,10 +33,10 @@
                 top: 10px;
                 font-size: 30px">用户名: {{$store.state.loginForm.username}}</p>
                 
-                <p style="position: absolute;
+                <p style="position: absolute; 
                 left: 30px;
                 top:90px;
-                font-size: 30px">粉丝数: {{fans}}</p>
+                font-size: 30px">粉丝数: {{$store.state.loginForm.fans}}</p>
 
                 <p style="position: absolute;
                 left: 350px;

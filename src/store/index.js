@@ -59,7 +59,8 @@ export default new Vuex.Store({
     loginForm:{
       username: localStorage.getItem("username") || "",
       password: localStorage.getItem("password") || "",
-      money: localStorage.getItem("money") || ""
+      money: localStorage.getItem("money") || "",
+      fans: localStorage.getItem("fans") || "",
     }
   },
   getters: {
@@ -77,10 +78,12 @@ export default new Vuex.Store({
           state.loginForm.username = res.user.username;
           state.loginForm.password = res.user.password;
           state.loginForm.money = res.user.money;
+          state.loginForm.fans = res.user.fans;
 
           localStorage.setItem("username", res.user.username);
           localStorage.setItem("password", res.user.password);
           localStorage.setItem("money", res.user.money);
+          localStorage.setItem("fans", res.user.fans);
 
           console.log(state.loginForm.username);
           login.loggedInUser = res.user;

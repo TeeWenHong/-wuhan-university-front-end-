@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    {{ loggedInUser }}
+    {{ $store.state.loginForm.username }}
   </div>
 </template>
 
@@ -9,8 +9,8 @@ export default {
     name:'UserComponents',
     data(){
         return{
-            userName:'用户100000001',
-            loggedInUser:null,
+            username:'',
+            
         }   
     }
 }
