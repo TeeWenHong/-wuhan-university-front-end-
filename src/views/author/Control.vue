@@ -14,7 +14,7 @@
       top: 100px;
       position: absolute;">
       粉丝数:{{$store.state.loginForm.fans}} &emsp;&emsp; 
-      作品数量:{{bookNumber}}</h2>
+      作品数量:{{$store.state.loginForm.bookNumber}}</h2>
       <!-- <h2>作品数量:{{book}}</h2> --> 
     </div>
 
@@ -24,7 +24,7 @@
       left: 20px;
       top: 20px;
       position: absolute;
-      ">作品列表</h1>
+      ">作品列表</h1> 
 
       <!-- 作品列表框 -->
       <div class="bookBox">

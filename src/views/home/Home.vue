@@ -56,10 +56,10 @@
         <p style="position: absolute;
                 left: 40px;
                 top: 20px;
-                font-size: 30px">平台打赏
+                font-size: 30px">平台打赏 
         </p> 
         <img style="width: 150px;
-        position: absolute;
+        position: absolute; 
         top: 90px;
         left: 25px;" src="../../assets/dashang.jpg">
       </div>
@@ -69,8 +69,8 @@
         <div class="hotBookBox">
           <h1 class="hotTitle">热门书籍</h1>
           <div class="hot">
-            <div class="botBook" v-for="n in top" key="index">
-              {{ n.id }}----{{ n.bookname }}---{{ $store.state.loginForm.username }}
+            <div class="hotBook" v-for="( n,index) in top" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
             </div>
           </div>
         </div>
@@ -78,30 +78,48 @@
           <div class="titleBox">
             <h1>仙侠</h1>
           </div>
+          <div class="hotBook" v-for="( n,index) in xianxia" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
+          </div>
         </div>
         <div class="qihuan">
           <div class="titleBox">
             <h1>奇幻</h1>
+          </div>
+          <div class="hotBook" v-for="( n,index) in qihuan" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
           </div>
         </div>
         <div class="dushi">
           <div class="titleBox">
             <h1>都市</h1>
           </div>
+          <div class="hotBook" v-for="( n,index) in dushi" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
+          </div>
         </div>
         <div class="xitong">
           <div class="titleBox">
             <h1>系统</h1>
+          </div>
+          <div class="hotBook" v-for="( n,index) in xitong" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
           </div>
         </div>
         <div class="kehuan">
           <div class="titleBox">
             <h1>科幻</h1>
           </div>
+          <div class="hotBook" v-for="( n,index) in kehuan" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
+          </div>
         </div>
         <div class="qingxiaoshuo">
           <div class="titleBox">
             <h1>轻小说</h1>
+          </div>
+          <div class="hotBook" v-for="( n,index) in qingxiaoshuo" :key="index">
+              {{ index + 1 }}----{{ n.bookname }}
           </div>
         </div>
       </div>
@@ -112,17 +130,14 @@
 export default {
   data(){
     return{
-      top: [
-        {id:1,bookname:'三体'},
-        {id:2,bookname:'四体'},
-        {id:3,bookname:'五体'},
-        {id:4,bookname:'我的霸道总裁'},
-        {id:5,bookname:'你没有霸道总裁'},
-        {id:6,bookname:'我就是个女总裁'},
-        {id:7,bookname:'全世界都是有钱人'},
-        {id:8,bookname:'啥东西，这不是小说'}
-
-      ],
+      top: [],
+      xianxia: [],
+      dushi: [],
+      qihuan: [],
+      xitong: [],
+      kehuan: [],
+      qingxiaoshuo: [],
+      all: "",
       // 走马灯的图片，这里是死数据
       item: [
       {url:require("../../assets/santi.png")},
@@ -131,7 +146,78 @@ export default {
       // {url:require("../../assets/logo.png")}
       ]
     }
+  },mounted() {
+    this.$http.get('/searchBookName?bookname=').then(response => {
+    this.all = response.data.length;
+    this.top = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.top[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+  });
+
+    this.$http.get('/searchTag?tag=仙侠').then(response => {
+      this.all = response.data.length;
+    this.xianxia = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.xianxia[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+    });
+
+    this.$http.get('/searchTag?tag=奇幻').then(response => {
+      this.all = response.data.length;
+    this.qihuan = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.qihuan[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+    });
+
+    this.$http.get('/searchTag?tag=都市').then(response => {
+      this.all = response.data.length;
+    this.dushi = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.dushi[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+    });
+
+    this.$http.get('/searchTag?tag=系统').then(response => {
+      this.all = response.data.length;
+    this.xitong = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.xitong[i].bookname = response.data[i].bookname;
+    }
+    }).catch(error => {
+      console.log(error);
+    });
+    this.$http.get('/searchTag?tag=科幻').then(response => {
+      this.all = response.data.length;
+    this.kehuan = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.kehuan[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+    });
+
+    this.$http.get('/searchTag?tag=轻小说').then(response => {
+      this.all = response.data.length;
+    this.qingxiaoshuo = Array.from({length: this.all}, () => ({bookname: ''}));
+    for (let i = 0; i < response.data.length; i++) {
+      this.qingxiaoshuo[i].bookname = response.data[i].bookname;
+    }
+  }).catch(error => {
+    console.log(error);
+    });
+
   }
+
 }
 </script>
 
@@ -194,7 +280,7 @@ export default {
   position: absolute;
 }
 
-.botBook{
+.hotBook{
   background-color: #ffffff;
   width: 250px;
   height: 40px;

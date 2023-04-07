@@ -107,22 +107,6 @@ export default {
     //   flag=!flag
     // }
     login() {
-    //   this.$refs.loginFrormRef.validate(async valid => {
-    //     if (!valid) return;
-    //     const { data: res } = await this.$http.post("login", this.loginForm);
-    //     if (res.flag === "ok") {
-    //       this.$message.success("登录成功");
-    //       // this.test = ref.user.username;
-    //       this.$router.push({ path: "/homebase" });
-    //       console.log(res.user.username); // 打印用户信息
-    //       console.log(res.user.id);
-    //       // console.log(test);
-    //       // 将用户信息保存到Vue组件的数据中，然后在页面上显示
-    //       this.loggedInUser = res.user;
-    //     } else {
-    //       this.$message.error("登录失败，密码或用户名错误");
-    //    }
-    //  });
       this.$store.dispatch('login',this)
     },
   },

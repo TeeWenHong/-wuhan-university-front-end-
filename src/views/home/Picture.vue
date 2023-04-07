@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="pagination">
-        <button v-for="(page, index) in pageCount" :key="index" @click="changePage(page)" style="width: 50px; height: 50px; position: relative; left: 1150px;">
+        <button v-for="(page, index) in pageCount" :key="index" @click="changePage(page)" style="width: 50px; height: 50px; position: relative; left: 150px;">
           {{ page }}
         </button>
       </div>

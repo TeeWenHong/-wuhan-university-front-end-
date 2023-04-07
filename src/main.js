@@ -14,6 +14,8 @@ import VueAxios from 'vue-axios'
 // 引入pinia
 import { createPinia } from 'pinia'
 
+
+
 const pinia = createPinia()
 
 Vue.use(pinia)

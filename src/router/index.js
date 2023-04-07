@@ -28,6 +28,9 @@ import UserInfo from '../views/UserInfo.vue'
 import Wallet from '../views/Wallet.vue'
 // 导入购物车
 import Trolley from '../views/shop/Trolley.vue'
+// 导入store实现登录才能观看首页
+import store from '../store'
+
 
 
 Vue.use(VueRouter)
@@ -130,7 +133,10 @@ const routes = [
       {
         path: "home",
         component : Home,
-        component: () => import('../views/home/Home.vue')
+        component: () => import('../views/home/Home.vue'),
+        meta: {
+          requiresAuth: true
+        },
       },
       {
         path: "book",
@@ -157,7 +163,25 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  store
+})
+
+router.beforeEach((to, from, next) => {
+  // 判断路由是否需要登录权限
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // 判断用户是否已经登录
+    if (! store.state.loginForm.username) {
+      next({
+        path: '/',
+        query: { redirect: to.fullPath }  // 记录登录前的路由
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
