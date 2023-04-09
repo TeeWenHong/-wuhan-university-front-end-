@@ -21,8 +21,8 @@
         <!-- 头像与资料框 -->
         <div class="userBaseInfoBox">
             <!-- 头像框 -->
-            <div class="avatar">
-
+            <div >
+                <img class="avatar" src="../../src/assets/logo.png">
             </div>
 
             <!-- 基本资料 -->
@@ -48,8 +48,10 @@
         <div class="renewBox">
 
             <div class="userInputBox">
-                <!-- 注意这里，还没做数据绑定！！第六周一定要做出来！ -->
-                <el-form ref="UpdateFrormRef"  :model="UpdateForm" label-width="100" >
+               
+                <el-form ref="UpdateFrormRef"  :model="UpdateForm" label-width="100" style="position: relative;
+                                         left: 200px;
+                                         top: 100px;">
 
                     <!-- <div class="username">
                     用户名
@@ -57,20 +59,20 @@
                     <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
                     </el-form-item>
                     </div> -->
-                    <el-form-item label="用户名">
-                    <el-input v-model="UpdateForm.username"></el-input>
+                    <el-form-item  label="用户名:">
+                    <el-input style="width: 800px;" v-model="UpdateForm.username"></el-input>
                     </el-form-item>
-                    <el-form-item label="密码">
-                    <el-input v-model="UpdateForm.password"></el-input>
+                    <el-form-item label="密码:">
+                    <el-input style="width: 800px;" v-model="UpdateForm.password"></el-input>
                     </el-form-item>
-                    <el-form-item label="邮箱">
-                    <el-input v-model="UpdateForm.email"></el-input>
+                    <el-form-item label="邮箱:">
+                    <el-input style="width: 800px;" v-model="UpdateForm.email"></el-input>
                     </el-form-item>
-                    <el-form-item label="性别">
-                    <el-input v-model="UpdateForm.sex"></el-input>
+                    <el-form-item label="性别:">
+                    <el-input style="width: 800px;" v-model="UpdateForm.sex"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机号码">
-                    <el-input v-model="UpdateForm.phone"></el-input>
+                    <el-form-item label="手机号码:">
+                    <el-input style="width: 800px;" v-model="UpdateForm.phone"></el-input>
                     </el-form-item>
                 </el-form>
                 <div class="button-login">
@@ -78,7 +80,11 @@
                     style="width:60%;
                     margin-bottom:15px;
                     background-color: #86A8E7;
-                     border-radius: 20px;
+                    border-radius: 20px;
+                    left: 500px;
+                    top: 100px;
+                    width: 300px;
+                    position:relative;
                     box-shadow:#000000 3px 3px 10px 0.1px;">
                     上传
                     </el-button>
@@ -98,11 +104,11 @@ export default {
     data(){
         return{
             UpdateForm:{
-                username:"Jackson123",
-                password:"1234532",
-                email:"gquwjsbxzhj@gmail.com",
-                sex:"男",
-                phone:"1932848392"
+                username:"",
+                password:"",
+                email:"@gmail.com",
+                sex:"",
+                phone:""
         },
 
     }
@@ -116,7 +122,7 @@ export default {
                 const { data: res } = await this.$http.post("UpdateForm?id="+this.$store.state.loginForm.id, this.UpdateForm);
             if (res == "ok") {
                 this.$message.success("上传成功");
-                this.$router.push({ path: "/homebase" });
+                this.$router.push({ path: "/" });
             } else {
                 this.$message.error("上传失败，数据不完全或网络出现问题");
     }
@@ -128,6 +134,11 @@ export default {
 </script>
 
 <style scope>
+
+.el-form-item{
+    /* background-color: #F0C2A9; */
+    width: 100px;
+}
 
 .userInputBox{
     background-color: aliceblue;

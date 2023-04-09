@@ -15,7 +15,7 @@
         <!-- 用户框——名字 -->
         <!-- 这里需要数据绑定，先用div来占位置，现在不是玩完整功能 ！！！！！！！！！！！！！！！！！！！！！！！！-->
         <div class="authoruser">
-            <!-- 用户100000001 -->
+            
             <UserComponents/>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <router-link to="/author/control" active-class="active" class="" style="text-decoration:none; position: absolute; left: 30px;color: black;">控制台</router-link><br><br>
             <router-link to="/author/manage" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">作品管理</router-link><br><br>
             <router-link to="/author/datacenter" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">数据中心</router-link><br><br>
-            <router-link to="/author/buypainting" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">购买的插画</router-link><br><br>
+            <router-link to="/author/buypainting" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">我购买的插画</router-link><br><br>
             <router-link to="/author/updateNovel" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">上传作品</router-link><br><br>
         </div>
         <!-- 右边控制台内容 -->

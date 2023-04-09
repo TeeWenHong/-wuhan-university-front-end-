@@ -10,14 +10,14 @@
   <!-- 搜索 -->
       <div class="search">
         <el-input
-          placeholder="请输入内容"
+          placeholder="请输入书名"
           prefix-icon="el-icon-search"
           v-model="input2"
           style="top:20%">
         </el-input>
       </div>
       <div class="search2">
-        <el-button style="background-color:rgb(83, 138, 233);">搜索</el-button>
+        <el-button style="background-color:rgb(83, 138, 233);width: 100px;">搜索</el-button>
       </div>
 
   <!-- 用户,购物车，钱包和通知 -->
@@ -97,7 +97,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 
 .el-icon-s-goods{
   color: #000;
@@ -150,6 +150,8 @@ export default {
   left: 450px;
   text-align:center;
   font-size: 35px;
+  background-color: transparent;
+  color: white;
 }
 .homebutton4{
   /* background-color: #F0C2A9; */
@@ -159,6 +161,8 @@ export default {
   left: 650px;
   text-align:center;
   font-size: 35px;
+  background-color: transparent;
+  color: white;
 }
 .homebutton5{
   /* background-color: #F0C2A9; */
@@ -168,6 +172,8 @@ export default {
   left: 850px;
   text-align:center;
   font-size: 35px;
+  background-color: transparent;
+  color: white;
 }
 
 .selectbox{

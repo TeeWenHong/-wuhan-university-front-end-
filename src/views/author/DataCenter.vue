@@ -4,7 +4,7 @@
       <!-- 打赏费，这是历史记录，不会因为提现而减少 -->
       <div class="donateBox">
         <div class="circle">
-          打赏
+          收入
         </div>
         {{ donate }}贯
       </div>
@@ -12,7 +12,7 @@
       <!-- 收入，一样不会因为提现减少 -->
       <div class="incomeBox">
         <div class="circle">
-          收入
+          支出
         </div>
         {{income}}贯
       </div>
@@ -22,7 +22,7 @@
         <div class="circle">
           总金额
         </div>
-        {{ totalValue }}贯
+        {{ $store.state.loginForm.money }}贯
       </div>
     </div>
   </div>
@@ -33,8 +33,8 @@ export default {
   data(){
     return{
       donate:'1000',
-      income:'10000',
-      totalValue: '11000'
+      income:'910',
+      
     }
   }
   

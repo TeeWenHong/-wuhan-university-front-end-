@@ -113,7 +113,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.el-input{
+  width: 250px;
+}
 
 *{
   margin: 0;

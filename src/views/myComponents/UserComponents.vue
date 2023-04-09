@@ -9,7 +9,6 @@ export default {
     name:'UserComponents',
     data(){
         return{
-            username:'',
             
         }   
     }

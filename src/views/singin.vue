@@ -37,7 +37,7 @@
         </el-form>
          
       </div>
-
+     
       <!-- 标题 -->
       <div class="login-title">
         <div class="title">
@@ -120,7 +120,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
+
+
 
 *{
   margin: 0;
@@ -130,13 +132,14 @@ export default {
 
 .el-button{
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
-
+  width: 200px;
+  height: 40px;
 }
 
 .button-singin2{
   width: 290px;
   position:absolute;
-  margin-top: 50px;
+  margin-top: 70px;
   left: 80px;
   /* width: 200px; */
   /* display: flex; */
@@ -146,7 +149,8 @@ export default {
   /* top:70px; */
   /* width:20px; */
   border: #41dfff;
-
+  width: 250px;
+  margin-bottom:1px;
 }
 
 .username{

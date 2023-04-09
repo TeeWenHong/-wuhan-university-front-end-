@@ -149,8 +149,9 @@ export default {
   },mounted() {
     this.$http.get('/searchBookName?bookname=').then(response => {
     this.all = response.data.length;
-    this.top = Array.from({length: this.all}, () => ({bookname: ''}));
-    for (let i = 0; i < response.data.length; i++) {
+    // this.top = Array.from({length: this.all}, () => ({bookname: ''}));
+    this.top = Array.from({length: 10}, () => ({bookname: ''}));
+    for (let i = 0; i < 10; i++) {
       this.top[i].bookname = response.data[i].bookname;
     }
   }).catch(error => {

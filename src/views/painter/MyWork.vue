@@ -1,15 +1,148 @@
 <template>
   <div>
-    hs
+  <div v-for="(top, index) in displayedBooks" :key="index">
+    <div class="book-cover">
+      <img style="height: 200px; width: 180px;"  
+      :src="require(`../../userimg/${top.picture_path}`)"  />
+    </div>
+    <div class="book-info">
+      <!-- <h2>{{ top.picture_path }}</h2><br> -->
+      <h2>作品名：{{ top.picname }}</h2><br>
+      <!-- <h2>作品名：{{ top.pic_id }}</h2><br> -->
+      <p>作者： {{ top.username }}</p><br>
+      <h5>价格：{{ top.price }}</h5>
+      <el-button class="buttonRead" @click="deletePic(top.pic_id)">删除</el-button> <!-- 新添加的阅读按钮 -->
+    </div>
   </div>
+  <div class="pagination">
+    <ul>
+      <li v-for="(page, index) in pages" :key="index" :class="{ active: currentPage === page }">
+        <a @click="currentPage = page">{{ page }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
 </template>
 
 <script>
+
 export default {
+name:"myWork",
+data() {
+  return {
+    top: [],
+    currentPage: 1,
+  };
+},
+computed: {
+  pages() {
+    const pageCount = Math.ceil(this.top.length / 5);
+    return Array.from({ length: pageCount }, (_, i) => i + 1);
+  },
+  displayedBooks() {
+    const startIndex = (this.currentPage - 1) * 5;
+    const endIndex = startIndex + 5;
+    return this.top.slice(startIndex, endIndex);
+  }
+},
+methods: {
+  // readBook(book) {
+  //   window.location.href = book.book_path;
+  // },
+  deletePic(pic) {
+    this.$http.get('/deletePic?pic_id='+pic).then(response => {
+      window.location.reload();
+    })
+  .catch(error => {
+  console.log(error);
+});
+
+
+  // console.log(pic)
+  // axios.post('/deletePic', { pic_id: pic.pic_id })
+  //   .then(response => {
+  //     console.log(pic)
+  //     console.log(response.data);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+}
+
+},
+mounted(){
+
+  // 展示全部书籍(作品名字，标签和位置)
+  this.$http.get('/searchMyAllPic?user_id='+this.$store.state.loginForm.id).then(response => {
+  this.all = response.data.length;
+  this.top = Array.from({length: this.all}, () => ({username:'',picture_path:''}));
+  for (let i = 0; i < response.data.length; i++) {
+    this.top[i].price = response.data[i].price;
+    this.top[i].picname = response.data[i].picname;
+    this.top[i].pic_id = response.data[i].pic_id;
+    this.top[i].username = response.data[i].username;
+    this.top[i].picture_path = response.data[i].picture_path;
+  }
+}).catch(error => {
+  console.log(error);
+});
+
+
+
 
 }
+};
+
 </script>
 
-<style>
+<style scoped>
+.buttonRead{
+  position: relative;
+  left: 910px;
+  top: 30px;
+  width: 100px;
+}
 
+.book-cover {
+background-color: #4CAF50;
+display: inline-block;
+margin: 10px;
+width: 180px;
+height: 200px;
+text-align: center;
+}
+.book-cover img {
+background-color: aqua;
+max-width: 100%;
+max-height: 100%;
+}
+.book-info {
+background-color: rgb(185, 185, 185);
+display: inline-block;
+margin: 10px;
+width: 1050px;
+height: 200px;
+vertical-align: top;
+}
+.pagination {
+margin-top: 20px;
+text-align: center;
+}
+.pagination ul {
+display: inline-block;
+padding: 0;
+margin: 0;
+}
+.pagination li {
+display: inline-block;
+margin-right: 10px;
+padding: 5px 10px;
+background-color: #ddd;
+border-radius: 3px;
+cursor: pointer;
+}
+.pagination li.active {
+background-color: #4CAF50;
+color: white;
+}
 </style>
