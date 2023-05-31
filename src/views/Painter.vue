@@ -8,9 +8,10 @@
             轻书阁
         </div>
         <!-- 标题框 -->
-        <router-link to="/painter/update" active-class="active" class="paintertitle">上传作品</router-link>
+        <!-- <router-link to="/painter/update" active-class="active" class="paintertitle">上传作品</router-link> -->
         <router-link to="/painter/mywork" active-class="active" class="paintertitle2">我的作品</router-link>
-        <router-link to="/painter/applicationmanagement" active-class="active" class="paintertitle3">申请管理</router-link>
+        <router-link to="/painter/applicationmanagement" active-class="active" class="paintertitle3">交易记录</router-link>
+        <!-- <router-link to="/painter/history" active-class="active" class="paintertitle4">交易历史</router-link> -->
         
 
         <!-- 用户框——名字 -->
@@ -45,12 +46,24 @@ export default {
 </script>
 
 <style>
+.paintertitle4{
+    background-color: aliceblue;
+    width: 200px;
+    height: 50px;
+    left: 820px;
+    font-size: 35px;
+    line-height:50px;
+    text-align: center;
+    position: absolute;
+    color: black;
+    text-decoration:none;
+}
 
 .paintertitle3{
     background-color: aliceblue;
     width: 200px;
     height: 50px;
-    left: 620px;
+    left: 420px;
     font-size: 35px;
     line-height:50px;
     text-align: center;
@@ -63,7 +76,7 @@ export default {
     background-color: aliceblue;
     width: 200px;
     height: 50px;
-    left: 420px;
+    left: 220px;
     font-size: 35px;
     line-height:50px;
     text-align: center;

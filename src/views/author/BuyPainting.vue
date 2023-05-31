@@ -8,10 +8,10 @@
     </div>
     <div class="book-info">
       <!-- <h2>{{ top.picture_path }}</h2><br> -->
-      <h2>作品名：{{ top.picname }}</h2><br>
-      <p>作者： {{ top.username }}</p><br>
+      <!-- <h2>作品名：{{ top.picname }}</h2> -->
+      <p>拥有者： {{ top.username }}</p>
       <h5>价格：{{ top.price }}</h5>
-      <el-button class="buttonRead" @click="buyPic(top)">下载</el-button> <!-- 新添加的阅读按钮 -->
+      <el-button class="buttonRead" @click="download(top.pic_id,top.picture_path)">下载</el-button> <!-- 新添加的阅读按钮 -->
     </div>
   </div>
   <div class="pagination">
@@ -26,6 +26,8 @@
 
 
 <script>
+import axios from 'axios';
+import FileSaver from 'file-saver';
 export default {
   
 name:"book",
@@ -50,7 +52,27 @@ methods: {
   // readBook(book) {
   //   window.location.href = book.book_path;
   // },
-  buyPic(){
+  // deleteBook(book) {
+  //   this.$http.get('/deleteBook?book_id='+book).then(response => {
+  //     window.location.reload();
+  //   })
+  download(pic_id,picture_path){
+  
+      // 发送GET请求下载图片
+      // const pic_id = 123; // 替换为你要下载的图片的pic_id
+
+      // 发送GET请求获取图片
+      axios.get(`/downloadPhoto?pic_id=${pic_id}`, { responseType: 'blob' })
+        .then(response => {
+          const filename = picture_path; // 下载的文件名
+          const blob = new Blob([response.data], { type: 'image/jpeg' });
+
+          // 使用FileSaver.js保存文件
+          FileSaver.saveAs(blob, filename);
+        })
+        .catch(error => {
+          console.error('下载图片出错:', error);
+        });
 
   }
 },
@@ -63,7 +85,7 @@ mounted(){
   for (let i = 0; i < response.data.length; i++) {
     this.top[i].price = response.data[i].price;
     this.top[i].picname = response.data[i].picname;
-    // this.top[i].book_path = response.data[i].book_path;
+    this.top[i].pic_id = response.data[i].pic_id;
     this.top[i].username = response.data[i].username;
     this.top[i].picture_path = response.data[i].picture_path;
   }
@@ -99,8 +121,8 @@ mounted(){
 .buttonRead{
   position: relative;
   left: 410px;
-  top: 30px;
-  width: 100px;
+  top: 0px;
+  width: 150px;
 }
 
 .book-cover {

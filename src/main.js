@@ -14,7 +14,11 @@ import VueAxios from 'vue-axios'
 // 引入pinia
 import { createPinia } from 'pinia'
 
-
+//引入mavonEditor
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+Vue.use(mavonEditor)
 
 const pinia = createPinia()
 

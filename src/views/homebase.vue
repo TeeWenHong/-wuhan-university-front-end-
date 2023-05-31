@@ -17,7 +17,8 @@
         </el-input>
       </div>
       <div class="search2">
-        <el-button style="background-color:rgb(83, 138, 233);width: 100px;">搜索</el-button>
+        <el-button @click="goSearch()" style="background-color:rgb(83, 138, 233);width: 100px;">书籍搜索</el-button>
+        <el-button @click="goSearch2()" style="background-color:rgb(83, 138, 233);width: 100px;">插画搜索</el-button>
       </div>
 
   <!-- 用户,购物车，钱包和通知 -->
@@ -90,7 +91,22 @@ export default {
       },
       gopicture(){
         this.$router.push({path:"/homebase/picture"});
+      },
+      goSearch() {
+        this.$router.push({
+        path: '/homebase/search',
+        query: { bookname: this.input2 }
+        });
+        window.location.reload();
+      },
+      goSearch2() {
+        this.$router.push({
+        path: '/homebase/searchpic',
+        query: { bookname: this.input2 }
+        });
+        window.location.reload();
       }
+
     }
 }
 
@@ -98,6 +114,11 @@ export default {
 
 
 <style scoped>
+
+.el-button{
+  background-color:rgb(83, 138, 233);
+  width: 100px;
+}
 
 .el-icon-s-goods{
   color: #000;
@@ -219,14 +240,14 @@ export default {
 
 .search2{
   position:absolute;
-  left: 1120px;
+  left: 1050px;
   top: 14px;
 }
 
 .search{
   background-color: aliceblue;
   height: 70px;
-  width: 700px;
+  width: 550px;
   position:absolute;
   left: 50%;
   transform: translate(-50%,0);

@@ -29,7 +29,8 @@
             <router-link to="/author/manage" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">作品管理</router-link><br><br>
             <router-link to="/author/datacenter" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">数据中心</router-link><br><br>
             <router-link to="/author/buypainting" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">我购买的插画</router-link><br><br>
-            <router-link to="/author/updateNovel" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">上传作品</router-link><br><br>
+            <router-link to="/author/updateNovel" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">创建书籍</router-link><br><br>
+            <!-- <router-link to="/author/updateChapters" active-class="active" class="" style="text-decoration:none;position: absolute; left: 30px;color: black;">书籍写作</router-link><br><br> -->
         </div>
         <!-- 右边控制台内容 -->
         <div class="authorButtonInfo">

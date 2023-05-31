@@ -8,6 +8,8 @@ import singin from '../views/singin.vue'
 import homebase from '../views/homebase.vue'
 import Book from '../views/home/Book.vue'
 import Picture from '../views/home/Picture.vue'
+import Search from '../views/home/Search.vue'
+import SearchPic from '../views/home/SearchPic.vue'
 // 导入作家
 import Author from '../views/Author.vue'
 import Control from '../views/author/Control.vue'
@@ -20,6 +22,7 @@ import Painter from '../views/Painter.vue'
 import UpDate from '../views/painter/UpDate.vue'
 import MyWork from '../views/painter/MyWork.vue'
 import ApplicationManagement from '../views/painter/ApplicationManagement.vue'
+import History from '../views/painter/History.vue'
 // 消息通知
 import News from '../views/News.vue'
 // 用户个人资料
@@ -31,12 +34,25 @@ import Trolley from '../views/shop/Trolley.vue'
 // 导入store实现登录才能观看首页
 import store from '../store'
 
+import Test from '../views/test.vue'
 
+import Watch from '../views/Watch.vue'
+
+import NovelWatch from '../views/NovelWatch.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  
+  {
+    path: '/novelwatch',
+    name: 'novelwatch',
+    component:  NovelWatch
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component:  Test
+  },
   {
     path: '/userinfo',
     name: 'userinfo',
@@ -52,7 +68,7 @@ const routes = [
     path: '/painter',
     name: 'painter',
     component: Painter,
-    redirect:'/painter/update',
+    redirect:'/painter/mywork',
     children:[
       {
         path:'update',
@@ -65,6 +81,10 @@ const routes = [
       {
         path:'applicationmanagement',
         component: ApplicationManagement,
+      },
+      {
+        path:'history',
+        component: History,
       },
       
     ]
@@ -157,6 +177,21 @@ const routes = [
         path: 'picture',
         name: 'picture',
         component:  Picture
+      },
+      {
+        path: 'search',
+        name: 'Search',
+        component:  Search
+      },
+      {
+        path: 'searchpic',
+        name: 'SearchPic',
+        component:  SearchPic
+      },
+      {
+        path: 'watch',
+        name: 'watch',
+        component:  Watch
       },
     ]
   }
